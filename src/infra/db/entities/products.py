@@ -1,6 +1,13 @@
-from sqlalchemy import Column, String, BIGINT, Numeric, Enum
+import enum
+from sqlalchemy import Column, String, BIGINT, Float, Enum
 from src.infra.db.settings import Base
-from .product_types import ProductTypes
+
+
+class ProductTypes(enum.Enum):
+    clothing = "clothing"
+    electronic = "electronic"
+    food = "food"
+    cleaning = "cleaning"
 
 
 class Products(Base):
@@ -8,5 +15,5 @@ class Products(Base):
 
     id = Column(BIGINT, primary_key=True)
     name = Column(String, nullable=False, unique=True)
-    value = Column(Numeric, nullable=False)
+    value = Column(Float, nullable=False)
     product_type = Column(Enum(ProductTypes), nullable=False)

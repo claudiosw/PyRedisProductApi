@@ -1,6 +1,4 @@
-from decimal import Decimal
 from src.domain.models.products import Products
-from src.infra.db.entities.product_types import ProductTypes
 from sqlalchemy.orm.exc import NoResultFound
 from src.infra.db.settings import db_connection_handler
 from src.infra.db.entities.products import Products as ProductsModel
@@ -27,7 +25,7 @@ class ProductsRepository(ProductsRepositoryInterface):
                 raise exception
 
     @classmethod
-    def register_product(self, id: int, name: str, value: Decimal, product_type: ProductTypes):
+    def register_product(self, id: int, name: str, value: float, product_type: str):
 
         with db_connection_handler as database:
             try:

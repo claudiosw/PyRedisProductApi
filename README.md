@@ -32,9 +32,11 @@ pre-commit install
 ```
 
 ### Create the database and the database structure:
+```
 python
 >>> from src.infra.db.settings import *
 >>> from src.infra.db.entities import *
 >>> db_connection_handler.connect_to_db()
 >>> engine = db_connection_handler.get_engine()
 >>> Base.metadata.create_all(engine)
+```
