@@ -1,3 +1,4 @@
+import datetime
 from src.domain.models.products import Products
 from src.infra.db.settings import cache_connection_handler
 from src.infra.db.entities.products import Products as ProductsModel
@@ -20,6 +21,7 @@ class ProductsCacheRepository(ProductsRepositoryInterface):
         cache_connection.hset(str(id), 'name', name)
         cache_connection.hset(str(id), 'value', str(value))
         cache_connection.hset(str(id), 'product_type', product_type)
+        cache_connection.expire(str(id), datetime.timedelta(seconds=180))
         new_product = cache_connection.hgetall(str(id))
         return ProductsModel(
             id=id,

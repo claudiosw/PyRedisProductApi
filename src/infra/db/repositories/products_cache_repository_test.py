@@ -1,3 +1,4 @@
+import time
 from src.infra.db.settings import cache_connection_handler
 from .products_cache_repository import ProductsCacheRepository
 
@@ -19,6 +20,8 @@ def test_cache_get_product_by_id():
     cache_connection.hset(str(fake_registry["id"]), key='value', value=str(fake_registry["value"]))
     cache_connection.hset(str(fake_registry["id"]), key='product_type', value=fake_registry["product_type"])
 
+    # result = products_cache_repository.get_product_by_id(fake_registry["id"])
+    time.sleep(10)
     result = products_cache_repository.get_product_by_id(fake_registry["id"])
     cache_connection.delete(str(fake_registry["id"]))
 
