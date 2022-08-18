@@ -22,12 +22,13 @@ def test_cache_get_product_by_id():
 
     # result = products_cache_repository.get_product_by_id(fake_registry["id"])
     time.sleep(10)
+    # result = cache_connection.hgetall(fake_registry["id"])
     result = products_cache_repository.get_product_by_id(fake_registry["id"])
     cache_connection.delete(str(fake_registry["id"]))
 
-    assert result['name'] == fake_registry["name"]
-    assert result['value'] == str(fake_registry["value"])
-    assert result['product_type'] == fake_registry["product_type"]
+    assert result.name == fake_registry["name"]
+    assert result.value == str(fake_registry["value"])
+    assert result.product_type == fake_registry["product_type"]
 
 
 def test_cache_register_product():

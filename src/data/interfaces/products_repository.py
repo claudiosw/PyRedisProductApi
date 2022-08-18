@@ -9,5 +9,5 @@ class ProductsRepositoryInterface(ABC):
         pass
 
     @abstractmethod
-    def register_product(self, id: int, name: str, value: float, type: str):
+    def register_product(self, id: int, name: str, value: float, product_type: str):
         pass

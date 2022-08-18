@@ -12,7 +12,15 @@ class ProductsCacheRepository(ProductsRepositoryInterface):
 
         cache_connection = cache_connection_handler.get_connection()
         product = cache_connection.hgetall(str(id))
-        return product
+        if product:
+            return ProductsModel(
+                id=id,
+                name=product['name'],
+                value=product['value'],
+                product_type=product['product_type']
+            )
+        else:
+            return None
 
     @classmethod
     def register_product(self, id: int, name: str, value: float, product_type: str):

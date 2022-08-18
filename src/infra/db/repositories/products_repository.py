@@ -37,7 +37,7 @@ class ProductsRepository(ProductsRepositoryInterface):
                     id=new_product.id,
                     name=new_product.name,
                     value=new_product.value,
-                    product_type=new_product.product_type
+                    product_type=new_product.product_type.value
                 )
             except:
                 database.session.rollback()

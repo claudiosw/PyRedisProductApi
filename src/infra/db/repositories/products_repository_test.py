@@ -64,4 +64,4 @@ def test_register_product():
     assert new_product.id == query_product.id
     assert new_product.name == query_product.name
     assert new_product.value == query_product.value
-    assert new_product.product_type == mock_product_type
+    assert new_product.product_type == ProductTypes(mock_product_type).value
