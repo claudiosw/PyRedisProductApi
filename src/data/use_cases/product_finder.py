@@ -27,7 +27,7 @@ class ProductFinder(ProductFinderInterface):
                     product.id,
                     product.name,
                     product.value,
-                    product.product_type
+                    product.product_type.value
                 )
             else:
                 self.__last_status = 0

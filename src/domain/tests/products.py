@@ -1,4 +1,5 @@
 from src.domain.models.products import Products
+from src.infra.db.entities.products import ProductTypes
 
 
 def create_mock_product():
@@ -6,5 +7,5 @@ def create_mock_product():
         id=0,
         name='someNameHere',
         value=9.91,
-        product_type="clothing"
+        product_type=ProductTypes["clothing"]
     )
